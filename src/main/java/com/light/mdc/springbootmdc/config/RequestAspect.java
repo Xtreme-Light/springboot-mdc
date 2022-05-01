@@ -35,6 +35,10 @@ public class RequestAspect {
       throws Throwable {
     log.info("RequestAspect.postMapping.around()");
     Object result = proceedingJoinPoint.proceed();
+    final String name = proceedingJoinPoint.getTarget().getClass().getName();
+    log.info("class name is {}",name);
+    final String methodName = proceedingJoinPoint.getSignature().getName();
+    log.info("method name is {} ",methodName);
     log.info("RequestAspect.postMapping.around()");
     return result;
   }
